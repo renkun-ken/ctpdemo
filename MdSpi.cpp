@@ -2,10 +2,10 @@
 #include <iostream>
 #include <cstring>
 
-char *BROKER_ID = "4200";
-char *USER_ID = "";
-char *PASSWORD = "";
-char *INSTRUMENTS[] = {"IF1710", "IF1712", "ag1709", "au1709", "ru1709"};
+char* BROKER_ID="4200"; // xzqh // SimNow: 9999
+char* USER_ID="";
+char* PASSWORD="";
+char* INSTRUMENTS[] = {"IF1710", "IF1712", "ag1709", "au1709", "ru1709"};
 int INSTRUMENT_COUNT = 5;
 
 void MdSpi::OnFrontConnected()
@@ -75,7 +75,8 @@ void MdSpi::OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarket
 void MdSpi::OnRtnDepthMarketData(
     CThostFtdcDepthMarketDataField *pDepthMarketData)
 {
-    std::cout << "OnRtnDepthMarketData" << std::endl;
+    std::cout << "OnRtnDepthMarketData: " << pDepthMarketData->InstrumentID << ", " << pDepthMarketData->UpdateTime << ", " << pDepthMarketData->UpdateMillisec << ", " <<
+    pDepthMarketData->LastPrice <<  std::endl;
 }
 
 void MdSpi::OnFrontDisconnected(int nReason)
